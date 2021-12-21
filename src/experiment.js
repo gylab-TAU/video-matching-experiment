@@ -8,6 +8,7 @@
  * or just delete them.
  * @imageDir images
  * @miscDir html
+ * @videoDir videos
  */
 
 // You can import stylesheets (.scss or .css).
@@ -23,6 +24,7 @@ import { showStimProcedure } from "./procedures/showStimProcedure";
 import EgoziService from "./Services/EgoziService";
 import NutellaService from "./Services/NutellaService";
 import IdFromUrlService from "./Services/IdFromUrlService";
+import * as videoMatchingComponent from "./components/videoMatchingComponent";
 
 import { initJsPsych } from "jspsych";
 
@@ -44,10 +46,14 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   const timeline = [];
 
+  let videoNames = ["./media/videos/amanda_davies.mp4", "./media/videos/lynda_kinkade.mp4"];
+
   // Preload assets
   timeline.push({
     type: PreloadPlugin,
-    images: assetPaths.images
+    images: assetPaths.images,
+    video: videoNames,
+    message: "Loading, please wait"
   });
 
   let getParticipantIdFromUrl = {
@@ -79,7 +85,7 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   timeline.push(instructions.default.getTrial());
 
-  timeline.push((new showStimProcedure("stimuli", "stim", 4, "jpg")).getProcedure());
+  timeline.push(videoMatchingComponent.default.getTrial(videoNames[0], videoNames[1]))
 
   let sendDataToServer = {
     type: CallFunctionPlugin,
@@ -98,7 +104,7 @@ export async function run({ assetPaths, input = {}, environment }) {
   let endMessage = {
     type: HtmlKeyboardResponsePlugin,
     stimulus: '<p style="font-size: 48px;">Thank you!</p>',
-    choices: jsPsych.NO_KEYS
+    choices: "NO_KEYS"
   };
 
   timeline.push(endMessage)

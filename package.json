@@ -12,6 +12,7 @@
     "@jspsych/plugin-call-function": "^1.0.0",
     "@jspsych/plugin-external-html": "^1.0.0",
     "@jspsych/plugin-fullscreen": "^1.0.0",
+    "@jspsych/plugin-html-button-response": "^1.1.0",
     "@jspsych/plugin-html-keyboard-response": "^1.0.0",
     "@jspsych/plugin-image-keyboard-response": "^1.0.0",
     "@jspsych/plugin-instructions": "^1.0.0",
