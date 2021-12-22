@@ -29,7 +29,7 @@ class videoMatchingComponent {
         return(
             '<div class="video">' +
                 '<video autoplay="true" loop="true" width="250" muted="true">' +
-                '<source src=' + source + " " + 'type="video/mp4"' + 
+                '<source class="image" src=' + source + " " + 'type="video/mp4"' + 
                 '</video>' +
             '</div>'
         );

@@ -25,6 +25,7 @@ import EgoziService from "./Services/EgoziService";
 import NutellaService from "./Services/NutellaService";
 import IdFromUrlService from "./Services/IdFromUrlService";
 import * as videoMatchingComponent from "./components/videoMatchingComponent";
+import * as imageMatchingComponent from "./components/imageMatchingComponent";
 
 import { initJsPsych } from "jspsych";
 
@@ -47,6 +48,7 @@ export async function run({ assetPaths, input = {}, environment }) {
   const timeline = [];
 
   let videoNames = ["./media/videos/amanda_davies.mp4", "./media/videos/lynda_kinkade.mp4"];
+  let imageNames = ["./media/images/stimuli/amanda_davies.jpg", "./media/images/stimuli/lynda_kinkade.jpg"];
 
   // Preload assets
   timeline.push({
@@ -70,10 +72,10 @@ export async function run({ assetPaths, input = {}, environment }) {
      }
   }
 
-  timeline.push(getParticipantIdFromUrl);
+  //timeline.push(getParticipantIdFromUrl);
 
-  timeline.push(participantDetails.default.getTrial());
-  timeline.push(consent.default.getConsentTrial())
+  //timeline.push(participantDetails.default.getTrial());
+  //timeline.push(consent.default.getConsentTrial())
 
   // Switch to fullscreen
   timeline.push({
@@ -83,9 +85,11 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   document.addEventListener("fullscreenchange", fullScreenChangeHandler)
 
-  timeline.push(instructions.default.getTrial());
+  //timeline.push(instructions.default.getTrial());
 
   timeline.push(videoMatchingComponent.default.getTrial(videoNames[0], videoNames[1]))
+
+  timeline.push(imageMatchingComponent.default.getTrial(imageNames[0], imageNames[1]))
 
   let sendDataToServer = {
     type: CallFunctionPlugin,
@@ -99,7 +103,7 @@ export async function run({ assetPaths, input = {}, environment }) {
      }
   }
 
-  timeline.push(sendDataToServer);
+  //timeline.push(sendDataToServer);
 
   let endMessage = {
     type: HtmlKeyboardResponsePlugin,

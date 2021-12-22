@@ -8,7 +8,21 @@
   display: flex;
 }
 
+.image-matching-trial{
+  display: flex;
+}
+
 .video {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.image {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 300px;
+}
+
+img{
+  width: 100%;
 }
