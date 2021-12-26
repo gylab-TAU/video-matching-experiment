@@ -11,7 +11,8 @@ class imageMatchingComponent {
             prompt: '<p> Are the people in the photos the same person? </p>',
             response_ends_trial: true,
             maintain_aspect_ratio: true,
-            stimulus_height: imageHeight
+            stimulus_height: imageHeight,
+            stimulus_duration: 5000
         };
 
         return trial;
