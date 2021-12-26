@@ -18,14 +18,15 @@ import * as consent from "./components/consentComponent";
 import * as id from "./components/idComponent";
 import * as instructions from "./components/instructionsComponent";
 import * as participantDetails from "./components/participantDetailsComponent";
+import * as videoMatchingComponent from "./components/videoMatchingComponent";
+import * as imageMatchingComponent from "./components/imageMatchingComponent";
+import * as confidenceComponent from "./components/confidenceComponent";
 
 import { showStimProcedure } from "./procedures/showStimProcedure";
 
 import EgoziService from "./Services/EgoziService";
 import NutellaService from "./Services/NutellaService";
 import IdFromUrlService from "./Services/IdFromUrlService";
-import * as videoMatchingComponent from "./components/videoMatchingComponent";
-import * as imageMatchingComponent from "./components/imageMatchingComponent";
 
 import { initJsPsych } from "jspsych";
 
@@ -89,7 +90,11 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   timeline.push(videoMatchingComponent.default.getTrial(videoNames[0], videoNames[1]))
 
+  timeline.push(confidenceComponent.default.getTrial());
+
   timeline.push(imageMatchingComponent.default.getTrial(imageNames[0], imageNames[1]))
+
+  timeline.push(confidenceComponent.default.getTrial());
 
   let sendDataToServer = {
     type: CallFunctionPlugin,
