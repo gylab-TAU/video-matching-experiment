@@ -22,6 +22,7 @@ import * as participantDetails from "./components/participantDetailsComponent";
 import { showStimProcedure } from "./procedures/showStimProcedure";
 import { videoMatchingProcedure } from "./procedures/videoMatchingStimProcedure";
 import { imageMatchingProcedure } from "./procedures/imageMatchingProcedure";
+import { familiarityProcedure } from "./procedures/familiarityProcedure";
 
 import EgoziService from "./Services/EgoziService";
 import NutellaService from "./Services/NutellaService";
@@ -89,6 +90,7 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   timeline.push((new videoMatchingProcedure(videoNames[0], videoNames[1])).getProcedure())
   timeline.push((new imageMatchingProcedure(imageNames[0], imageNames[1])).getProcedure())
+  timeline.push((new familiarityProcedure(imageNames)).getProcedure())
 
   let sendDataToServer = {
     type: CallFunctionPlugin,
