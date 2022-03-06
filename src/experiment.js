@@ -14,15 +14,9 @@
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
 
-import * as consent from "./components/consentComponent";
-import * as id from "./components/idComponent";
-import * as instructions from "./components/instructionsComponent";
 import * as participantDetails from "./components/participantDetailsComponent";
-
+import * as consent from "./components/consentComponent";
 import { showStimProcedure } from "./procedures/showStimProcedure";
-import { videoMatchingProcedure } from "./procedures/videoMatchingStimProcedure";
-import { imageMatchingProcedure } from "./procedures/imageMatchingProcedure";
-import { familiarityProcedure } from "./procedures/familiarityProcedure";
 
 import EgoziService from "./Services/EgoziService";
 import NutellaService from "./Services/NutellaService";
@@ -47,15 +41,12 @@ export async function run({ assetPaths, input = {}, environment }) {
   global.jsPsych = initJsPsych();
 
   const timeline = [];
-
-  let videoNames = ["./media/videos/amanda_davies.mp4", "./media/videos/lynda_kinkade.mp4"];
-  let imageNames = ["./media/images/stimuli/amanda_davies.jpg", "./media/images/stimuli/lynda_kinkade.jpg"];
-
+  console.log(assetPaths.video)
   // Preload assets
   timeline.push({
     type: PreloadPlugin,
     images: assetPaths.images,
-    video: videoNames,
+    video: assetPaths.video,
     message: "Loading, please wait"
   });
 
@@ -73,10 +64,10 @@ export async function run({ assetPaths, input = {}, environment }) {
      }
   }
 
-  //timeline.push(getParticipantIdFromUrl);
+  timeline.push(getParticipantIdFromUrl);
 
-  //timeline.push(participantDetails.default.getTrial());
-  //timeline.push(consent.default.getConsentTrial())
+  timeline.push(participantDetails.default.getTrial());
+  timeline.push(consent.default.getConsentTrial())
 
   // Switch to fullscreen
   timeline.push({
@@ -88,9 +79,11 @@ export async function run({ assetPaths, input = {}, environment }) {
 
   //timeline.push(instructions.default.getTrial());
 
-  timeline.push((new videoMatchingProcedure(videoNames[0], videoNames[1])).getProcedure())
-  timeline.push((new imageMatchingProcedure(imageNames[0], imageNames[1])).getProcedure())
-  timeline.push((new familiarityProcedure(imageNames)).getProcedure())
+ // timeline.push((new videoMatchingProcedure(videoNames[0], videoNames[1])).getProcedure())
+ // timeline.push((new imageMatchingProcedure(imageNames[0], imageNames[1])).getProcedure())  
+ // timeline.push((new familiarityProcedure(imageNames)).getProcedure())
+
+ timeline.push((new showStimProcedure(assetPaths["video"])).getProcedure())
 
   let sendDataToServer = {
     type: CallFunctionPlugin,

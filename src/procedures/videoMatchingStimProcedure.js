@@ -9,7 +9,7 @@ export class videoMatchingProcedure {
 
     getProcedure() {
         let procedure = {
-            timeline: [videoMatchingComponent.default.getTrial(this.video1, this.video2), confidenceComponent.default.getTrial()],
+            timeline: [videoMatchingComponent.default.getTrial(this.video1, this.video2)],
             randomize_order: false
         }
 

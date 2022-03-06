@@ -18,7 +18,7 @@ class consentComponent {
     static getImageTags() {
         let tagsArray = [];
         
-        for (let i = 1; i <= 2; i++) {
+        for (let i = 1; i <= 1; i++) {
             tagsArray.push('<img src="media/images/consent/consent' + i + '.png" style="max-width:' + window.screen.availWidth + "px; max-height:" + (window.screen.availHeight - 50) +  'px;">');
         }
 
