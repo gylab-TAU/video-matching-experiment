@@ -17,7 +17,7 @@ class videoMatchingComponent {
             step: 0.5,
             slider_start: 3.5,
             min: 1,
-            max: 5
+            max: 6
         };
 
         return trial;

@@ -55,7 +55,7 @@ export class showStimProcedure {
 
         let videoObjects = [];
 
-        for (let i = 0; i < values.length / 2; i++) {
+        for (let i = 0; i < id1.length; i++) {
             let vid1 = stats.sample(["1.mp4", "2.mp4"], 1)[0];
             let vid2 = stats.sample(["1.mp4", "2.mp4"], 1)[0];
 
