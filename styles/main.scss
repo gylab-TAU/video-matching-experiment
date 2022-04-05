@@ -6,10 +6,21 @@
 
 .video-matching-trial{
   display: flex;
+  margin-bottom: 15px;
+}
+
+video {
+  height: 100%;
+  object-fit: cover;
 }
 
 .image-matching-trial{
   display: flex;
+  height: 120%;
+}
+
+p{
+  justify-content: center;
 }
 
 .video {
@@ -25,4 +36,8 @@
 
 img{
   width: 100%;
+}
+
+.prompt{
+  justify-content: center !important;
 }

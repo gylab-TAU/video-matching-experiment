@@ -1,4 +1,4 @@
-import  HtmlButtonResponsePlugin from '@jspsych/plugin-html-slider-response';
+import  HtmlButtonResponsePlugin from '@jspsych/plugin-html-button-response';
 
 class videoMatchingComponent {
     static getTrial(video1, video2) {
@@ -7,8 +7,8 @@ class videoMatchingComponent {
         let trial = {
             type: HtmlButtonResponsePlugin,
             stimulus: this.getStimulus(video1, video2),
-            prompt: '<p> Are the people in the videos the same person? </p>',
-            labels: [1, 2, 3, 4, 5, 6],
+            prompt: '<p class="prompt"> Are the people in the videos the same person? </p>',
+            choices: [1, 2, 3, 4, 5, 6],
             response_ends_trial: true,
             maintain_aspect_ratio: true,
             stimulus_height: imageHeight,
@@ -17,7 +17,11 @@ class videoMatchingComponent {
             step: 0.5,
             slider_start: 3.5,
             min: 1,
-            max: 6
+            max: 6,
+            on_finish: function(data) {
+                data.video1 = video1;
+                data.video2 = video2;
+            }
         };
 
         return trial;
@@ -34,7 +38,7 @@ class videoMatchingComponent {
     static getVideo(source) {
         return(
             '<div class="video">' +
-                '<video autoplay="true" loop="true" width="250" muted="true">' +
+                '<video autoplay="true" loop="true" width="400" muted="true">' +
                 '<source class="image" src=' + source + " " + 'type="video/mp4"' + 
                 '</video>' +
             '</div>'

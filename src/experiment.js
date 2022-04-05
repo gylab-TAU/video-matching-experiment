@@ -88,16 +88,17 @@ export async function run({ assetPaths, input = {}, environment }) {
   let sendDataToServer = {
     type: CallFunctionPlugin,
     func: () => { 
+      let data = jsPsych.data.get().ignore("stimulus");
       document.removeEventListener("fullscreenchange", fullScreenChangeHandler)
 
       let first_trial = jsPsych.data.get().values()[1];
       let participantId = first_trial["participantId"];
       
-      sendData("galit", "jspsych-try", jsPsych.data.get(), participantId);
+      sendData("galit", "video-matching-task", data, participantId);
      }
   }
 
-  //timeline.push(sendDataToServer);
+  timeline.push(sendDataToServer);
 
   let endMessage = {
     type: HtmlKeyboardResponsePlugin,
