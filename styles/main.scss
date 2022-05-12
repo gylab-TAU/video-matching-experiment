@@ -1,5 +1,11 @@
 @import "~jspsych/css/jspsych.css";
 
+
+.jspsych-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .jspsych-display-element {
   background-color: #ffffff;
 }
@@ -39,5 +45,13 @@ img{
 }
 
 .prompt{
+  direction: rtl;
   justify-content: center !important;
+  order: -1;
+}
+
+#jspsych-fullscreen-btn{
+  max-width: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }

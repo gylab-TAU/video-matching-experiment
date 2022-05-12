@@ -7,8 +7,8 @@ class videoMatchingComponent {
         let trial = {
             type: HtmlButtonResponsePlugin,
             stimulus: this.getStimulus(video1, video2),
-            prompt: '<p class="prompt"> Are the people in the videos the same person? </p>',
-            choices: [1, 2, 3, 4, 5, 6],
+            prompt: '<p class="prompt"> האם בשני הסרטונים מופיע אותו האדם? </p>',
+            choices: ["בוודאות לא", "כנראה שלא", "אולי לא", "אולי כן", "כנראה שכן", "בוודאות כן"],
             response_ends_trial: true,
             maintain_aspect_ratio: true,
             stimulus_height: imageHeight,

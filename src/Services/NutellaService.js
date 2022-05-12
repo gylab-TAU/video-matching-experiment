@@ -27,6 +27,12 @@ class NutellaService {
             console.log(err);
         }
 
+        let config = {
+            headers: {
+                "Content-Type": "text/plain"
+            }
+        }
+
         axios.post("http://178.62.106.190/saveResults/", data).then((res) => {
             success(res);
         }).catch((err) => {
